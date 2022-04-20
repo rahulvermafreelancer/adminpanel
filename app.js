@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
 
 //My routes
 const authRoutes = require("./routes/auth");
@@ -30,6 +31,7 @@ mongoose
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "client/build")));
 
 //My Routes
 app.use("/api", authRoutes);
